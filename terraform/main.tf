@@ -7,7 +7,6 @@ terraform {
   }
 
   backend "s3" {
-    # aws s3api create-bucket --bucket poc-apollo-tfstate --region us-east-1 # use this command to create your s3 bucket
     bucket = "poc-apollo-tfstate" // S3 bucket for your terraform state
     key    = "state.tfstate"
     region = "us-east-1"
