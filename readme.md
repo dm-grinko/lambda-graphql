@@ -2,38 +2,39 @@
 
 ## Description
 
-This POC demonstrates the use of AWS lambda functions for creating GraphQL API. We have 2 lambda functions. The first one is for the Apollo server (NodeJS) and another one is for a Graphql resolver (Python).
+This POC demonstrates the use of AWS lambda functions for creating GraphQL API
 
 ## Usage
 
-1) Create a file ./terraform/variables.tfvars
-```
+- Create a file ./terraform/variables.tfvars
+
+```conf
 region = "us-east-1"
 access_key = "XXXX"
 api_gw_name = "XXXX"
 secret_key = "XXXX"
 stage_name = "dev"
-python_lambda_arn = "arn:aws:lambda:us-east-1:XXXX:function:XXXX"
+python_lambda_arn = "arn:aws:lambda:us-east-1:<your_aws_account_id>:function:<your_resolver_lambda_name>"
 ```
 
-2) Create S3 bucket for your terraform state:
+- Create S3 bucket for your terraform state:
 
 `aws s3api create-bucket --bucket <your_bucket_name> --region us-east-1`
 
-3) Update the backend section in `./terraform/main.tf`
+- Update the backend section in `./terraform/main.tf`
 
-4) Install dependencies for the Apollo lambda
+- Install dependencies for the Apollo lambda
 
-```
+```bash
 cd ./lambdas/lambda-apollo
 npm i
 ```
 
-5) Make `./upload.sh` file executable:
+- Make `./upload.sh` file executable:
 
 `chmod +x ./upload.sh`
 
-6) Check out the ./upload.sh file commands and run it
+- Check out the ./upload.sh file commands and run it
 
 `./upload.sh`
 
