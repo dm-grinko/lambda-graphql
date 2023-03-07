@@ -8,7 +8,7 @@ output "apollo_lambda_function_arn" {
   value       = module.apollo_lambda.function_arn
 }
 
-output "python_lambda_function_arn" {
+output "resolver_lambda_function_arn" {
   description = "The ARN of the Lambda function"
-  value       = module.python_lambda.function_arn
+  value       = module.resolver_lambda.function_arn
 }

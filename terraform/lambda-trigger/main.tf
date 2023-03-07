@@ -24,7 +24,7 @@ resource "aws_lambda_function" "lambda" {
   runtime       = var.runtime
   environment {
     variables = {
-      PYTHON_LAMBDA_ARN = var.python_lambda_arn
+      RESOLVER_LAMBDA_ARN = var.resolver_lambda_arn
     }
   }
   depends_on    = [aws_iam_role_policy_attachment.attachment]

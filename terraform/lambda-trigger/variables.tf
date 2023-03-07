@@ -53,6 +53,6 @@ variable "handler" {
 variable "request_template" {
   type = string
 }
-variable "python_lambda_arn" {
+variable "resolver_lambda_arn" {
   type = string
 }

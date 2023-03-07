@@ -13,7 +13,7 @@ const lambdaInvoke = async (params: { query: string, arg?: string}) => {
   const client = new LambdaClient({ region: 'us-east-1' });
 
   const command = new InvokeCommand({
-    FunctionName: process.env.PYTHON_LAMBDA_ARN,
+    FunctionName: process.env.RESOLVER_LAMBDA_ARN,
     LogType: LogType.Tail,
     Payload: JsonToArray(params)
   });

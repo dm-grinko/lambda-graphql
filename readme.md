@@ -14,7 +14,7 @@ access_key = "XXXX"
 api_gw_name = "XXXX"
 secret_key = "XXXX"
 stage_name = "dev"
-python_lambda_arn = "arn:aws:lambda:us-east-1:<your_aws_account_id>:function:<your_resolver_lambda_name>"
+resolver_lambda_arn = "arn:aws:lambda:us-east-1:<your_aws_account_id>:function:<your_resolver_lambda_name>"
 ```
 
 - Create S3 bucket for your terraform state:
@@ -33,6 +33,8 @@ npm i
 - Make `./upload.sh` file executable:
 
 `chmod +x ./upload.sh`
+
+- Go to `./terraform` and run `terraform init`
 
 - Check out the ./upload.sh file commands and run it
 

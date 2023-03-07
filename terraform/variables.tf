@@ -23,6 +23,6 @@ variable "stage_name" {
   type        = string
 }
 
-variable "python_lambda_arn" {
+variable "resolver_lambda_arn" {
   type = string
 }

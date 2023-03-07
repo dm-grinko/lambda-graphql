@@ -1,6 +1,6 @@
 cd ./lambdas
 rm lambda-apollo.zip
-rm lambda-python.zip
+rm lambda-resolver.zip
 cd ./lambda-apollo
 rm -rf ./build
 npm run build
