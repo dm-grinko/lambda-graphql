@@ -1,7 +1,4 @@
-import * as dotenv from 'dotenv';
 import { InvokeCommand, LambdaClient, LogType } from '@aws-sdk/client-lambda';
-
-dotenv.config()
 
 const JsonToArray = (json) => {
 	const str = JSON.stringify(json, null, 0);
@@ -12,11 +9,11 @@ const JsonToArray = (json) => {
 	return ret
 };
 
-const lambdaInvoke = async ({ FunctionName, params }) => {
+const lambdaInvoke = async (params: { query: string, arg?: string}) => {
   const client = new LambdaClient({ region: 'us-east-1' });
 
   const command = new InvokeCommand({
-    FunctionName,
+    FunctionName: process.env.PYTHON_LAMBDA_ARN,
     LogType: LogType.Tail,
     Payload: JsonToArray(params)
   });
@@ -27,19 +24,15 @@ const lambdaInvoke = async ({ FunctionName, params }) => {
   return JSON.parse(body);
 };
 
-const pythonLambda = process.env.PYTHON_LAMBDA_ARN;
-
 export const resolvers = {
   Query: {
     books: async () => {
       // const { payload } = process.env;
       // const { event } = JSON.parse(payload);
 
-      return lambdaInvoke({ FunctionName: pythonLambda, params: {
-        query: "getAllBooks"
-      }});
+      return lambdaInvoke({ query: "getAllBooks" });
     },
-    book: async (_, { author, title }) => {
+    book: async (_: any, { author, title }) => {
       let params;
 
       if (author) {
@@ -56,7 +49,7 @@ export const resolvers = {
         return [];
       }
 
-      return lambdaInvoke({ FunctionName: pythonLambda, params });
+      return lambdaInvoke(params);
     },
   }
 };

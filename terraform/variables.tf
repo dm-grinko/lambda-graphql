@@ -22,3 +22,7 @@ variable "stage_name" {
   description = "AWS API Gateway stage name"
   type        = string
 }
+
+variable "python_lambda_arn" {
+  type = string
+}

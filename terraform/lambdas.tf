@@ -13,7 +13,8 @@ module "apollo_lambda" {
   http_method = "POST"
   rest_api_id = aws_api_gateway_rest_api.api.id
   parent_id   = aws_api_gateway_rest_api.api.root_resource_id
-  # request_template = "./request_template.template"
+  request_template = "./request_template.template"
+  python_lambda_arn = var.python_lambda_arn
 }
 
 module "python_lambda" {

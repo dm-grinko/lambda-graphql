@@ -13,6 +13,7 @@ access_key = "XXXX"
 api_gw_name = "XXXX"
 secret_key = "XXXX"
 stage_name = "dev"
+python_lambda_arn = "arn:aws:lambda:us-east-1:XXXX:function:XXXX"
 ```
 
 2) Create S3 bucket for your terraform state:
@@ -21,23 +22,44 @@ stage_name = "dev"
 
 3) Update the backend section in `./terraform/main.tf`
 
-4) Rename `lambdas/lambda-apollo/src/.env.example` into `.env` and add arn for your python lambda
-
-Example: `PYTHON_LAMBDA_ARN=arn:aws:lambda:us-east-1:555555555555:function:POC_GraphQL_Lambda_Python`
-
-5) Install dependencies for the Apollo lambda
+4) Install dependencies for the Apollo lambda
 
 ```
 cd ./lambdas/lambda-apollo
 npm i
 ```
 
-6) Make `./upload.sh` file executable:
+5) Make `./upload.sh` file executable:
 
 `chmod +x ./upload.sh`
 
-7) Check out the ./upload.sh file commands and run it
+6) Check out the ./upload.sh file commands and run it
 
 `./upload.sh`
 
+## TEST
 
+`https://XXXXXXXXXX.execute-api.us-east-1.amazonaws.com/dev/graphql`
+
+```graphql
+query book {
+  book(author: "Paul Auster") {
+    author
+    title
+  }
+}
+
+query book {
+  book(title: "The Awakening") {
+    author
+    title
+  }
+}
+
+query books {
+  books {
+    author
+    title
+  }
+}
+```

@@ -7,8 +7,7 @@
   "scripts": {
     "compile": "tsc -p ./",
     "copy": "cp -R ./node_modules ./build/src",
-    "build": "npm run compile && npm run copy",
-    "start": "npm run build && node ./build/src/index.dev.js"
+    "build": "npm run compile && npm run copy"
   },
   "keywords": ["GraphQL, AWS, Lambda, Apollo, NodeJS, Python"],
   "author": "Dmitry Grinko",
