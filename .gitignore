@@ -1,0 +1,6 @@
+lambdas/lambda-apollo/node_modules
+lambdas/lambda-apollo/build
+lambdas/lambda-*.zip
+terraform/.terraform
+terraform/.terraform.lock.hcl
+terraform/variables.tfvars

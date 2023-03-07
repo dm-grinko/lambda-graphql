@@ -1,0 +1,11 @@
+{
+    "req": {
+      "body": $input.body,
+      "resource":"/graphql",
+      "path":"/graphql",
+      "httpMethod":"POST",
+      "requestContext": {}
+    },
+    "args": $util.toJson($context.args),
+    "userdet": $util.toJson($context.identity)
+}
