@@ -1,5 +1,9 @@
 # Lambda GraphQL POC
 
+## Description
+
+This POC demonstrates the use of AWS lambda functions for creating GraphQL API. We have 2 lambda functions. The first one is for the Apollo server (NodeJS) and another one is for a Graphql resolver (Python).
+
 ## Usage
 
 1) Create a file ./terraform/variables.tfvars
