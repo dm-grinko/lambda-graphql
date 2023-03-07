@@ -1,16 +1,16 @@
 {
   "name": "lambda-apollo",
   "version": "1.0.0",
-  "description": "",
+  "description": "POC",
   "main": "index.js",
   "type": "module",
   "scripts": {
     "compile": "tsc -p ./",
     "copy": "cp -R ./node_modules ./build/src",
     "build": "npm run compile && npm run copy",
-    "start": "npm run build && node ./build/index.dev.js"
+    "start": "npm run build && node ./build/src/index.dev.js"
   },
-  "keywords": [],
+  "keywords": ["GraphQL, AWS, Lambda, Apollo, NodeJS, Python"],
   "author": "Dmitry Grinko",
   "license": "ISC",
   "dependencies": {
@@ -19,6 +19,7 @@
     "@aws-sdk/client-lambda": "^3.282.0",
     "apollo-server-core": "^3.11.1",
     "apollo-server-lambda": "^3.11.1",
+    "dotenv": "^16.0.3",
     "graphql": "^16.6.0",
     "json-to-graphql-query": "^2.2.5"
   },

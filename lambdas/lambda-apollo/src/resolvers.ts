@@ -1,4 +1,7 @@
+import * as dotenv from 'dotenv';
 import { InvokeCommand, LambdaClient, LogType } from '@aws-sdk/client-lambda';
+
+dotenv.config()
 
 const JsonToArray = (json) => {
 	const str = JSON.stringify(json, null, 0);
@@ -24,7 +27,7 @@ const lambdaInvoke = async ({ FunctionName, params }) => {
   return JSON.parse(body);
 };
 
-const FunctionName = 'arn:aws:lambda:us-east-1:544226435463:function:POC_GraphQL_v1_Lambda_Python';
+const pythonLambda = process.env.PYTHON_LAMBDA_ARN;
 
 export const resolvers = {
   Query: {
@@ -32,7 +35,7 @@ export const resolvers = {
       // const { payload } = process.env;
       // const { event } = JSON.parse(payload);
 
-      return lambdaInvoke({ FunctionName, params: {
+      return lambdaInvoke({ FunctionName: pythonLambda, params: {
         query: "getAllBooks"
       }});
     },
@@ -53,7 +56,7 @@ export const resolvers = {
         return [];
       }
 
-      return lambdaInvoke({ FunctionName, params });
+      return lambdaInvoke({ FunctionName: pythonLambda, params });
     },
   }
 };

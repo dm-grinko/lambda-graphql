@@ -21,10 +21,23 @@ stage_name = "dev"
 
 3) Update the backend section in `./terraform/main.tf`
 
-4) Make `./upload.sh` file executable:
+4) Rename `lambdas/lambda-apollo/src/.env.example` into `.env` and add arn for your python lambda
+
+Example: `PYTHON_LAMBDA_ARN=arn:aws:lambda:us-east-1:555555555555:function:POC_GraphQL_Lambda_Python`
+
+5) Install dependencies for the Apollo lambda
+
+```
+cd ./lambdas/lambda-apollo
+npm i
+```
+
+6) Make `./upload.sh` file executable:
 
 `chmod +x ./upload.sh`
 
-5) Check out the ./upload.sh file commands and run it
+7) Check out the ./upload.sh file commands and run it
 
 `./upload.sh`
+
+
